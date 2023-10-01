@@ -15,8 +15,6 @@ export const articleApi = createApi({
     },
   }),
 
-  // https://article-extractor-and-summarizer.p.rapidapi.com/summarize?url=https%3A%2F%2Fwww.jsmastery.pro%2F&length=3
-
   endpoints: (builder) => ({
     getSummary: builder.query({
       query: (params) =>
