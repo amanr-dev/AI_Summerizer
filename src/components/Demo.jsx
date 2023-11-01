@@ -33,16 +33,17 @@ const Demo = () => {
     const { data } = await getSummary({ articleUrl: article.url });
 
     if (data?.summary) {
-      const newArticle = { ...article, summary: data.summary };
+      const newArticle = { ...article, summary: data.summary, url: "" };
 
       const updatedArticles = [newArticle, ...allArticles];
 
       setArticle(newArticle);
 
-      // console.log(newArticle);
+      console.log(newArticle);
       localStorage.setItem("articles", JSON.stringify(updatedArticles));
       setAllArticles(updatedArticles);
     }
+    // setArticle({ ...article, url: "" });
   };
 
   // Copy function
