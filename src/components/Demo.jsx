@@ -33,13 +33,13 @@ const Demo = () => {
     const { data } = await getSummary({ articleUrl: article.url });
 
     if (data?.summary) {
-      const newArticle = { ...article, summary: data.summary, url: "" };
+      const newArticle = { ...article, summary: data.summary };
 
       const updatedArticles = [newArticle, ...allArticles];
 
       setArticle(newArticle);
 
-      console.log(newArticle);
+      // console.log(newArticle);
       localStorage.setItem("articles", JSON.stringify(updatedArticles));
       setAllArticles(updatedArticles);
     }
@@ -54,6 +54,16 @@ const Demo = () => {
       setCopied(false);
     }, 3000);
   };
+
+  // Clear from history
+  const clearHistory = () => {
+    setAllArticles([]);
+    if (localStorage.getItem("articles")) {
+      localStorage.removeItem("articles");
+    }
+  };
+
+  // console.log(allArticles);
 
   return (
     <section className="mt-16 w-full max-w-xl">
@@ -113,16 +123,30 @@ const Demo = () => {
             </div>
           ))}
         </div>
+        {!allArticles.length <= 0 && (
+          <div className="flex justify-end items-center">
+            <button
+              className=" bg-[#1f40ae] py-2 px-4 text-white rounded-md
+            hover:bg-[#0F8AC6]"
+              onClick={clearHistory}
+            >
+              Clear History
+            </button>
+          </div>
+        )}
       </div>
       {/* Display Results */}
       <div className="my-10 max-w-full justify-center items-center flex">
         {isFetching ? (
-          <img
-            src={loader}
-            alt="Loading..."
-            className="w-20 h-20 mx-auto object-contain"
-            style={{ filter: "invert(1)" }}
-          />
+          <div className="flex flex-col justify-center items-center gap-4">
+            <img
+              src={loader}
+              alt="Loading..."
+              className="w-20 h-20 mx-auto object-contain"
+              style={{ filter: "invert(1)" }}
+            />
+            <p>Wait while we Summarize Articles...</p>
+          </div>
         ) : error ? (
           <p className="font-hind font-bold text-slate-700 text-center">
             That URL was't supported, Please enter supported URL.
