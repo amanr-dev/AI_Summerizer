@@ -122,6 +122,11 @@ const Demo = () => {
               </p>
             </div>
           ))}
+          {!allArticles.length && (
+            <div className="flex items-center justify-center">
+              <h4 className="text-xl text-slate-500">No History</h4>
+            </div>
+          )}
         </div>
         {!allArticles.length <= 0 && (
           <div className="flex justify-end items-center">
