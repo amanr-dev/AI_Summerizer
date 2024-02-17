@@ -1,5 +1,6 @@
 import React from "react";
 import { logo } from "../assets";
+import { FaGithub } from "react-icons/fa";
 
 const Hero = () => {
   return (
@@ -18,11 +19,14 @@ const Hero = () => {
           }}
           className="black_btn"
         >
-          GitHub
+          <span className="flex w-full items-center justify-center gap-2">
+            <FaGithub className="w-5 h-5" />
+            GitHub
+          </span>
         </button>
       </nav>
 
-      <h1 className="head_text blue_gradient">
+      <h1 className="head_text blue_gradient ">
         Summarize Articles with <br />
         <span className="text-slate-700">OpenAI GPT-4</span>
       </h1>
