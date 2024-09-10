@@ -15,7 +15,7 @@ const Hero = () => {
         <button
           type="button"
           onClick={() => {
-            window.open("https://github.com/amanr-dev");
+            window.open("https://github.com/dipanshurdev");
           }}
           className="black_btn"
         >
